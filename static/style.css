@@ -9,28 +9,33 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: #031332;
     color: #e5e7eb;
+
     display: flex;
-    flex-direction: column; /* stacks children vertically */
-    align-items: center;    /* justify-content: center removed */
-    justify-content: center;       /* new: centre children vertically */
+    flex-direction: column;
+    align-items: center;
+
+    /* fix */
+    justify-content: flex-start;
+    padding: 16px;
+
     min-height: 100vh;
-    overflow: hidden; /* this is to hide the ripple edges */
-    position: relative; /* this enables fixed or absolute layers behave nicely */
+
+    /* second time round fix */
+    overflow-y: auto;
 }
 
 /* App container */
 .app-container {
-    position: relative;
-    z-index: 5;
-    background: #020617;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 700px;
-    min-height: 70vh;
     display: flex;
     flex-direction: column;
+    height: 90vh;
+    width: 100%;
+    max-width: 700px;
+
+    /* Change this */
+    min-height: 80vh;
+
     padding: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* Header */
@@ -52,16 +57,24 @@ body {
 
 /* Chat window */
 .chat-container {
+    width: 100%;
+
+    /* this is the change */
     flex: 1;
+
     overflow-y: auto;
-    padding-right: 4px
 }
 
+
 #chat-window {
-    padding-left: 16px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+
+    /* THIS IS IMPORTANT */
+    flex: 1;
+    overflow-y: auto;
 }
 
 /* Message bubbles */
@@ -122,12 +135,12 @@ body {
 
 #message-input {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
+
+    /* this part prevents zooming on ios devices */
+    font-size: 16px;
+
     border-radius: 999px;
-    border: 1px solid #374151;
-    background: #020617;
-    color: #e5e7eb;
-    outline: none;
 }
 
 #message-input:focus {
@@ -238,6 +251,61 @@ body {
 /* staggered copies for continuous effect */
 .circle2 { animation-delay: -5.3s; }
 .circle3 { animation-delay: -10.6s; }
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .app-container {
+    border-radius: 16px;
+    padding: 12px;
+    min-height: 90vh;
+  }
+
+  .app-header h1 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  #chat-window {
+    padding: 10px;
+  }
+
+  .message-bubble {
+    font-size: 0.9rem;
+    max-width: 85%;
+  }
+
+  #chat-form {
+    gap: 6px;
+    padding-top: 10px;
+  }
+
+  #message-input {
+    min-height: 44px;
+  }
+
+  #chat-form button {
+    min-height: 44px;
+    padding: 0 14px;
+  }
+
+  .wellbeing-tip-pill {
+    margin: 12px;
+    font-size: 12px;
+  }
+
+  #safety-banner {
+    font-size: 10px;
+    padding: 8px 12px;
+    bottom: 10px;
+  }
+}
 
 @keyframes ripple {
     0% {
