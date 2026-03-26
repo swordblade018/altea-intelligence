@@ -6,6 +6,14 @@ const chatWindow = document.getElementById("chat-window");
 
 let isSending = false;
 
+
+// This function makes the text that have stars between them to be displayed as bold text
+function formatBotMessage(text) {
+    return text
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\n/g, "<br>");
+}
+
 // ---- Message helpers ----------------------------------------------------
 
 function addMessageToChat(role, text) {
@@ -15,7 +23,7 @@ function addMessageToChat(role, text) {
     // if it's a bot message, add the avatar first
     if (role === "bot") {
         const avatar = document.createElement("img");
-        avatar.src = "/static/altealogo.png"; // same file as header logo
+        avatar.src = "/static/altealogo.png";
         avatar.alt = "Altea avatar";
         avatar.classList.add("message-avatar");
         row.appendChild(avatar);
@@ -23,7 +31,12 @@ function addMessageToChat(role, text) {
 
     const bubble = document.createElement("div");
     bubble.classList.add("message-bubble");
-    bubble.textContent = text;
+
+    if (role === "bot") {
+        bubble.innerHTML = formatBotMessage(text);
+    } else {
+        bubble.textContent = text;
+    }
 
     row.appendChild(bubble);
     chatWindow.appendChild(row);
