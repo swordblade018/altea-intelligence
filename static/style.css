@@ -1,0 +1,322 @@
+/* Basic reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #031332;
+    color: #e5e7eb;
+    display: flex;
+    flex-direction: column; /* stacks children vertically */
+    align-items: center;    /* justify-content: center removed */
+    justify-content: center;       /* new: centre children vertically */
+    min-height: 100vh;
+    overflow: hidden; /* this is to hide the ripple edges */
+    position: relative; /* this enables fixed or absolute layers behave nicely */
+}
+
+/* App container */
+.app-container {
+    position: relative;
+    z-index: 5;
+    background: #020617;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 700px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.app-header {
+    border-bottom: 1px solid #1f2937;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.app-header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.app-header p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+/* Chat window */
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px
+}
+
+#chat-window {
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Message bubbles */
+.message-row {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+/* push user messages to right if you do that already */
+.message-row.user {
+    justify-content: flex-end;
+}
+
+/* bot row - avatar on the left, bubble after */
+.message-row.bot {
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.message-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: #111827; /* subtle background in case logo isn't fully-bleed */
+    
+    padding: 5px 4px 3px 4px; /* top, right, bottom, left */
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3); /* optional subtle glow */
+
+    transform: translate(-3px, 1px); /* move left, + keep center vertically */
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.message-row.bot .message-bubble {
+    background: #111827;
+    border-bottom-left-radius: 4px;
+}
+
+/* Form */
+#chat-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    border-top: 1px solid #1f2937;
+    padding-top: 12px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 999px;
+    border: 1px solid #374151;
+    background: #020617;
+    color: #e5e7eb;
+    outline: none;
+}
+
+#message-input:focus {
+    border-color: #2563eb;
+}
+
+#chat-form button {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#chat-form button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+
+#safety-banner {
+    z-index: 5; /* keep your banner above the ripples too */
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    max-width: 600px;
+    text-align: center;
+
+    font-size: 12px;
+    line-height: 1.4;
+    color: #9ca3af;         /* soft grey for subtle tone */
+
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.25); /* subtle background */
+    border-radius: 10px;
+    backdrop-filter: blur(4px);       /* smooth frosted look */
+}
+
+.wellbeing-tip-pill {
+    max-width: 700px;
+    margin: 24px auto 16px auto; /* space under chat card and above footer */
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(13, 24, 46, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #cfd6ff;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.wellbeing-tip-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8ea2ff;
+    background: rgba(142, 162, 255, 0.12);
+    padding: 3px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.wellbeing-tip-text {
+    line-height: 1.4;
+}
+
+
+
+/* --- RIPPLE BACKGROUND EFFECT --- */
+
+.ripple-layer {
+    position: fixed;
+    inset: 0;                        /* cover whole viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* one circle is one ripple */
+.ripple-circle {
+    position: absolute;
+    width: 110vmax;                  /* big, but not absurdly huge */
+    height: 110vmax;
+    border-radius: 50%;
+    background: transparent;
+    
+    border: 8px solid rgba(150, 190, 255, 0.25);  /* bright ring */
+    
+    box-shadow:
+        0 0 0 32px rgba(120, 170, 255, 0.20),
+        0 0 0 64px rgba(100, 150, 230, 0.16)
+        0 0 0 96px rgba(80, 130, 205, 0.12),
+        0 0 0 128px rgba(60, 110, 180, 0.10),
+        0 0 0 160px rgba(40, 90, 150, 0.07),
+        0 0 0 192px rgba(25, 70, 120, 0.05);     /* softer outer rings */
+    background: transparent;         /* important: no fill */
+    animation: ripple 32s linear infinite;
+}
+
+/* staggered copies for continuous effect */
+.circle2 { animation-delay: -5.3s; }
+.circle3 { animation-delay: -10.6s; }
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.2);       /* smaller, tight around the card */
+        opacity: 0.7;
+    }
+    70% {
+        opacity: 0.25;
+    }
+    100% {
+        transform: scale(1.4);       /* expands past the edges */
+        opacity: 0;
+    }
+}
+
+
+.header-title{
+    display:flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    margin-left: -10px;
+    height: 32px;       /* Adjust if needed */
+    width: 32px;
+    object-fit: contain; /* Proportion is maintained */
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3)); /* optional subtle polish */
+}
+
+.typing {
+    font-style: italic;
+    opacity: 0.7;
+    padding: 10px 14px;
+    margin: 6px 0;
+    background: rgba(255,255,255,0.07);
+    border-radius: 12px;
+    width: fit-content;
+    color: #ccc;
+}
+
+.typing::after {
+    content: " ...";
+    animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+.app-header {
+    padding: 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 70px;    /* Safely increase later */
+    height: auto;
+}
+
+.header-text h1 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-left: 10px;
+}
+
+.subtitle {
+    display: block; /* forces each subtitle to its own line */
+    margin-top: 2px; /*optional spacing */
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Altea - Mental Health Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<noscript>
+  <p style="padding:12px;">
+    Altea needs JavaScript enabled to work. Please enable JavaScript and refresh.
+  </p>
+</noscript>
+
+    <!-- Safety footer-->
+
+    <div class="ripple-layer">
+        <div class="ripple-circle"></div>
+        <div class="ripple-circle circle2"></div>
+        <div class="ripple-circle circle3"></div>
+    </div>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <img src="{{ url_for('static', filename='altealogo.png') }}" class="logo" alt="Altea logo">
+                
+                <div class="header-text">
+                    <h1>Altea Intelligence — An AI Chatbot here to help with your mental health</h1>
+                    <span class="subtitle">A calm space to talk about what's on your mind.</span>
+                    <span class="subtitle">Running on version 0.4 (latest)</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="chat-container">
+            <div id="chat-window"></div>
+        </main>
+
+        <form id="chat-form">
+            <input
+                id="message-input"
+                type="text"
+                placeholder="Type your message here..."
+                autocomplete="off"
+                required
+            />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+    <!--Wellbeing tip bar basically the quotes-->
+    <div class="wellbeing-tip-pill">
+        <span class="wellbeing-tip-label">Words of advice: </span>
+        <span class="wellbeing-tip-text" id="wellbeing-tip-text">
+            Take things one step at a time. You don't have to handle everything today.
+        </span>
+    </div>
+
+<!--Safety banner-->
+<div id="safety-banner">
+    <p><strong>Important: </strong>Altea is not a crisis service and cannot respond to emergencies. If you are in immediate danger, please contact your local emergency services or a trusted adult.</p>
+    <p><strong>Privacy:</strong> To protect everyone's privacy, messages aren’t stored by default. Avoid sharing personal identifying information.</p>
+    
+    <p>
+  In the UK, you can contact <strong>Samaritans (24/7)</strong> on <strong>116 123</strong>
+  or text <strong>"SHOUT"</strong> to <strong>85258</strong>.
+  You can also visit
+  <a href="https://www.samaritans.org/" target="_blank" rel="noopener noreferrer">samaritans.org</a>.
+</p>
+    <p><strong>- Created by Jon Toledo</strong></p>
+</div>
+
+</body>
+</html>
