@@ -265,40 +265,45 @@ body {
 
 .ripple-circle {
     position: absolute;
-    width: 110vmax;
-    height: 110vmax;
+    width: 32vmax;
+    height: 32vmax;
     border-radius: 50%;
+    border: 4px solid rgba(120, 170, 255, 0.16);
     background: transparent;
-    border: 8px solid rgba(150, 190, 255, 0.25);
     box-shadow:
-        0 0 0 32px rgba(120, 170, 255, 0.20),
-        0 0 0 64px rgba(100, 150, 230, 0.16),
-        0 0 0 96px rgba(80, 130, 205, 0.12),
-        0 0 0 128px rgba(60, 110, 180, 0.10),
-        0 0 0 160px rgba(40, 90, 150, 0.07),
-        0 0 0 192px rgba(25, 70, 120, 0.05);
-    animation: ripple 32s linear infinite;
+        0 0 0 14px rgba(120, 170, 255, 0.05),
+        0 0 40px rgba(80, 130, 205, 0.08);
+    animation: ripple 18s ease-out infinite;
+    opacity: 0;
 }
 
-.circle2 { animation-delay: -5.3s; }
-.circle3 { animation-delay: -10.6s; }
+.circle2 { animation-delay: -6s; }
+.circle3 { animation-delay: -12s; }
 
 @keyframes ripple {
     0% {
-        transform: scale(0.2);
-        opacity: 0.7;
+        transform: scale(0.4);
+        opacity: 0;
     }
-    70% {
-        opacity: 0.25;
+    8% {
+        opacity: 0.22;
+    }
+    60% {
+        opacity: 0.12;
     }
     100% {
-        transform: scale(1.4);
+        transform: scale(6.5);
         opacity: 0;
     }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
+    .ripple-circle {
+        width: 42vmax;
+        height: 42vmax;
+        border-width: 3px;
+    }
     body {
         padding: 10px;
     }
