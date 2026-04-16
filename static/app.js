@@ -23,7 +23,7 @@ function addMessageToChat(role, text) {
     // if it's a bot message, add the avatar first
     if (role === "bot") {
         const avatar = document.createElement("img");
-        avatar.src = "/static/alteacoloured.png";
+        avatar.src = "/static/alteacolouredcircle.png";
         avatar.alt = "Altea avatar";
         avatar.classList.add("message-avatar");
         row.appendChild(avatar);
