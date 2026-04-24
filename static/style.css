@@ -154,18 +154,25 @@ body {
 
 /* Text-to-speech button */
 .speak-button {
-    margin-left: 8px;
-    background: transparent;
-    border: none;
+    align-self: flex-end;
+    margin-left: 4px;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cfd6ff;
     cursor: pointer;
-    font-size: 14px;
-    opacity: 0.7;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    font-size: 13px;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
 }
 
 .speak-button:hover {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.08);
+    background: rgba(255, 255, 255, 0.14);
 }
 
 .message-row.bot .message-bubble {

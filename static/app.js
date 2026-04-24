@@ -57,7 +57,13 @@ function addMessageToChat(role, text) {
 
     if (role === "bot") {
         bubble.innerHTML = formatBotMessage(text);
+    } else {
+        bubble.textContent = text;
+    }
 
+    row.appendChild(bubble);
+
+    if (role === "bot") {
         const speakButton = document.createElement("button");
         speakButton.textContent = "🔊";
         speakButton.classList.add("speak-button");
@@ -67,12 +73,9 @@ function addMessageToChat(role, text) {
             speakText(text);
         });
 
-        bubble.appendChild(speakButton);
-    } else {
-        bubble.textContent = text;
+        row.appendChild(speakButton);
     }
-
-    row.appendChild(bubble);
+    
     chatWindow.appendChild(row);
 
     // Scroll to bottom
