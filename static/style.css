@@ -25,18 +25,19 @@ body {
     z-index: 5;
     background: transparent;
     border-radius: 16px;
-    width: 100%;
+    width: min(92vw, 700px);
     max-width: 700px;
     display: flex;
     flex-direction: column;
     padding: 16px;
 
     /* Smooth widening/closing animation */
-    transition: max-width 0.35s ease;
+    transition: width 0.35s ease, max-width 0.35s ease;
 }
 
 .app-container.expanded {
-    max-width: 2500px;
+    width: min(92vw, 1300px);
+    max-width: 1300px;
 }
 
 /* Desktop card styling */
