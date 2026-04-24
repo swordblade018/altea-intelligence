@@ -6,6 +6,9 @@ const chatWindow = document.getElementById("chat-window");
 
 let isSending = false;
 
+// Store current conversation while page is open
+let conversationHistory = [];
+
 
 // This function makes the text that have stars between them to be displayed as bold text
 function formatBotMessage(text) {
@@ -79,6 +82,12 @@ async function sendMessage(message) {
     // Show user message immediately
     addMessageToChat("user", message);
 
+    // Save user input into conversation history
+    conversationHistory.push({
+        role: "user",
+        content: message
+    });
+
     const sendBtn = chatForm.querySelector("button");
     sendBtn.disabled = true;
 
@@ -98,7 +107,10 @@ async function sendMessage(message) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ message }),
+            body: JSON.stringify({
+                message: message,
+                history: conversationHistory
+            }),
             signal: controller.signal,
         });
 
@@ -121,7 +133,19 @@ async function sendMessage(message) {
             return;
         }
 
-        addMessageToChat("bot", (data && data.reply) ? data.reply : "I’m here with you.");
+        const botReply = (data && data.reply) ? data.reply : "I’m here with you.";
+
+        addMessageToChat("bot", botReply);
+
+        // Save bot reply into conversation history
+        conversationHistory.push({
+            role: "assistant",
+            content: botReply
+        });
+
+        // Keep only the latest 20 messages to control token usage
+        conversationHistory = conversationHistory.slice(-20);
+
     } catch (err) {
         clearTimeout(timeout);
         console.error(err);

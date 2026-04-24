@@ -12,12 +12,13 @@ def index():
 def chat():
     data = request.get_json(silent=True) or {}
     user_message = (data.get("message") or "").strip()
+    history = data.get("history") or []
 
     if not user_message:
         return jsonify({"reply": "Tell me what’s on your mind, and I’ll reply."})
 
     try:
-        bot_reply = bot.get_bot_reply(user_message)
+        bot_reply = bot.get_bot_reply(user_message, history)
     except Exception:
         app.logger.exception("Error in get_bot_reply")
         bot_reply = "Sorry, something went wrong on the server."

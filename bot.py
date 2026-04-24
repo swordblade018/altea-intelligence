@@ -77,7 +77,7 @@ def _mock_model_response(user_text: str) -> str:
 
 # ---- Main entrypoint ----------------------------------------------------
 
-def reply(user_text: str) -> str:
+def reply(user_text: str, history=None) -> str:
     text = (user_text or "").strip()
 
     if not text:
@@ -110,7 +110,15 @@ def reply(user_text: str) -> str:
             ),
         }
 
-        messages = [system_message, {"role": "user", "content": text}]
+        messages = [system_message]
+        
+        # Add previous conversation history (if any)
+        if history:
+            messages.extend(history)
+
+        # Add the current user message (if no history was sent)
+        if not history:
+            messages.append({"role": "user", "content": text})
 
         resp = client.chat.completions.create(
             model=MODEL_NAME,
@@ -122,5 +130,5 @@ def reply(user_text: str) -> str:
     except Exception:
         return "Sorry — I’m having trouble reaching the server right now."
 
-def get_bot_reply(message: str) -> str:
-    return reply(message)
+def get_bot_reply(message: str, history=None) -> str:
+    return reply(message, history)
