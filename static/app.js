@@ -20,6 +20,23 @@ function formatBotMessage(text) {
         .replace(/\n/g, "<br>");
 }
 
+// This function reads text out loud using the browser's built-in speech system
+function speakText(text) {
+    if (!("speechSynthesis" in window)) {
+        alert("Text-to-speech is not supported in this browser");
+        return;
+    }
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "en-GB";
+    speech.rate = 0.95;
+    speech.pitch = 1;
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(speech);
+}
+
 // ---- Message helpers ----------------------------------------------------
 
 function addMessageToChat(role, text) {
@@ -40,6 +57,17 @@ function addMessageToChat(role, text) {
 
     if (role === "bot") {
         bubble.innerHTML = formatBotMessage(text);
+
+        const speakButton = document.createElement("button");
+        speakButton.textContent = "🔊";
+        speakButton.classList.add("speak-button");
+        speakButton.setAttribute("aria-label", "Read Altea's response aloud");
+
+        speakButton.addEventListener("click", () => {
+            speakText(text);
+        });
+
+        bubble.appendChild(speakButton);
     } else {
         bubble.textContent = text;
     }
