@@ -3,6 +3,9 @@
 const chatForm = document.getElementById("chat-form");
 const messageInput = document.getElementById("message-input");
 const chatWindow = document.getElementById("chat-window");
+const expandBtn = document.getElementById("expand-btn");
+const appContainer = document.querySelector(".app-container");
+
 
 let isSending = false;
 
@@ -88,7 +91,7 @@ async function sendMessage(message) {
         content: message
     });
 
-    const sendBtn = chatForm.querySelector("button");
+    const sendBtn = chatForm.querySelector('button[type="submit"]');
     sendBtn.disabled = true;
 
     messageInput.value = "";
@@ -158,8 +161,23 @@ async function sendMessage(message) {
         }
     } finally {
         isSending = false;
-        chatForm.querySelector("button").disabled = false;
+        sendBtn.disabled = false;
     }
+}
+
+if (expandBtn && appContainer) {
+    expandBtn.addEventListener("click", () => {
+        appContainer.classList.toggle("expanded");
+
+        const isExpanded = appContainer.classList.contains("expanded");
+
+        expandBtn.setAttribute(
+            "aria-label",
+            isExpanded ? "Collapse chat" : "Expand chat"
+        );
+
+        expandBtn.textContent = isExpanded ? "↔" : "⛶";
+    });
 }
 
 chatForm.addEventListener("submit", (e) => {

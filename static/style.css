@@ -30,6 +30,13 @@ body {
     display: flex;
     flex-direction: column;
     padding: 16px;
+
+    /* Smooth widening/closing animation */
+    transition: max-width 0.35s ease;
+}
+
+.app-container.expanded {
+    max-width: 1000px;
 }
 
 /* Desktop card styling */
@@ -199,6 +206,23 @@ body {
     cursor: pointer;
 }
 
+#expand-btn {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+#expand-btn:hover {
+    opacity: 0.8;
+}
+
 #chat-form button:disabled {
     opacity: 0.6;
     cursor: default;
@@ -300,6 +324,9 @@ body {
 
 /* Mobile */
 @media (max-width: 768px) {
+    #expand-btn {
+        display: none;
+    }
     .ripple-circle {
         width: 42vmax;
         height: 42vmax;
