@@ -180,6 +180,12 @@ body {
     border-bottom-left-radius: 4px;
 }
 
+.bot-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 /* Typing indicator */
 .typing {
     font-style: italic;
