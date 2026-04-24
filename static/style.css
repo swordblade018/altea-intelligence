@@ -175,6 +175,7 @@ body {
 /* Form */
 #chat-form {
     display: flex;
+    align-items: center;
     gap: 8px;
     margin-top: 12px;
     border-top: 1px solid #1f2937;
@@ -210,9 +211,10 @@ body {
     background: transparent;
     border: none;
     color: #9ca3af;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
-    padding: 0 8px;
+    padding: 0 10px;
+    min-width: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,6 +223,7 @@ body {
 
 #expand-btn:hover {
     opacity: 0.8;
+    transform: scale(1.08);
 }
 
 #chat-form button:disabled {
