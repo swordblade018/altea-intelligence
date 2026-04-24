@@ -118,6 +118,13 @@ body {
     justify-content: flex-end;
 }
 
+.message-row.user .message-bubble {
+    background: rgba(37, 99, 235, 0.18);
+    color: #cfe0ff;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+    border-bottom-right-radius: 4px;
+}
+
 .message-row.bot {
     justify-content: flex-start;
     align-items: flex-end;
