@@ -378,7 +378,8 @@ body {
 
     .app-container {
         border-radius: 16px;
-        padding: 12px;
+        padding: 8px;
+        width: 100%;
     }
 
     .chat-container {
