@@ -382,7 +382,7 @@ body {
     }
 
     .chat-container {
-        height: 50vh;
+        height: 65vh;
         min-height: 260px;
         max-height: none;
     }
