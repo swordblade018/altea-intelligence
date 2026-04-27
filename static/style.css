@@ -396,18 +396,24 @@ body {
     }
 
     .header-content {
-        align-items: flex-start;
-        gap: 12px;
+        align-items: center;
+        gap: 10px;
     }
 
     .logo {
-        width: 48px;
+        width: 44px;
         margin-left: 0;
     }
 
     .header-text h1 {
-        font-size: 1.05rem;
-        line-height: 1.3;
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 2px;
+    }
+
+    .header-text h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
     }
 
     .subtitle {
