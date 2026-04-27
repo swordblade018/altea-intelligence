@@ -450,3 +450,23 @@ body {
         padding: 8px 12px;
     }
 }
+
+/* Default: Show desktop, hide mobile */
+.mobile-tip {
+    display: none;
+}
+
+.desktop-tip{
+    display: block;
+}
+
+/* On mobile: swap them */
+@media (max-width: 768px) {
+    .mobile-tip {
+        display: block;
+    }
+
+    .desktop-tip {
+        display: none;
+    }
+}
