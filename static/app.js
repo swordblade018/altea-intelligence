@@ -20,6 +20,23 @@ function formatBotMessage(text) {
         .replace(/\n/g, "<br>");
 }
 
+function typeWriter(element, text, speed = 20) {
+    let i = 0;
+    element.innerHTML = ""; // start empty
+
+    function typing() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+
+    typing();
+
+}
+
+
 // This function reads text out loud using the browser's built-in speech system
 function speakText(text) {
     if (!("speechSynthesis" in window)) {
@@ -56,7 +73,7 @@ function addMessageToChat(role, text) {
     bubble.classList.add("message-bubble");
 
     if (role === "bot") {
-        bubble.innerHTML = formatBotMessage(text);
+        typeWriter(bubble, text, 20);
 
         const messageContainer = document.createElement("div");
         messageContainer.classList.add("bot-message-container");
