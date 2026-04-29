@@ -26,14 +26,15 @@ function typeWriter(element, text, speed = 20) {
 
     function typing() {
         if (i < text.length) {
-            element.innerHTML += text.charAt(i);
+            element.textContent += text.charAt(i);
             i++;
             setTimeout(typing, speed);
+        } else {
+            element.innerHTML = formatBotMessage(text);
         }
     }
 
     typing();
-
 }
 
 
