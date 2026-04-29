@@ -117,7 +117,7 @@ function showTypingIndicator() {
 
     const bubble = document.createElement("div");
     bubble.classList.add("message-bubble", "typing");
-    bubble.textContent = "Altea is typing...";
+    bubble.textContent = "Altea is thinking...";
 
     row.appendChild(bubble);
     chatWindow.appendChild(row);
