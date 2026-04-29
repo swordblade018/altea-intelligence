@@ -32,6 +32,9 @@ function typeWriter(element, text, speed = 20) {
             element.innerHTML = formatBotMessage(visibleText);
 
             i++;
+
+            chatWindow.parentElement.scrollTop = chatWindow.parentElement.scrollHeight;
+            
             setTimeout(typing, speed);
         }
     }
