@@ -76,7 +76,7 @@ function addMessageToChat(role, text) {
     bubble.classList.add("message-bubble");
 
     if (role === "bot") {
-        typeWriter(bubble, text, 5);
+        typeWriter(bubble, text, 8);
 
         const messageContainer = document.createElement("div");
         messageContainer.classList.add("bot-message-container");
