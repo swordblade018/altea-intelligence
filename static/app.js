@@ -22,15 +22,17 @@ function formatBotMessage(text) {
 
 function typeWriter(element, text, speed = 20) {
     let i = 0;
+    let visibleText = "";
+
     element.innerHTML = ""; // start empty
 
     function typing() {
         if (i < text.length) {
-            element.textContent += text.charAt(i);
+            visibleText += text.charAt(i);
+            element.innerHTML = formatBotMessage(visibleText);
+
             i++;
             setTimeout(typing, speed);
-        } else {
-            element.innerHTML = formatBotMessage(text);
         }
     }
 
