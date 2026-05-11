@@ -5,6 +5,9 @@ const messageInput = document.getElementById("message-input");
 const chatWindow = document.getElementById("chat-window");
 const expandBtn = document.getElementById("expand-btn");
 const appContainer = document.querySelector(".app-container");
+const settingsBtn = document.getElementById("settings-btn");
+const themeMenu = document.getElementById("theme-menu");
+const themeOptions = document.querySelectorAll(".theme-option");
 
 
 let isSending = false;
@@ -273,3 +276,35 @@ document.addEventListener("DOMContentLoaded", () => {
     // Change tip every 8 seconds (8000ms)
     setInterval(showNextTip, 8000);
 });
+
+// Open and close the theme menu
+settingsBtn.addEventListener("click", () => {
+    if (themeMenu.style.display === "flex") {
+        themeMenu.style.display = "none";
+    } else {
+        themeMenu.style.display = "flex";
+    }
+});
+
+// Change theme when a theme option is clicked
+themeOptions.forEach((button) => {
+    button.addEventListener("click", () => {
+        const selectedTheme = button.dataset.theme;
+
+        if (selectedTheme === "default") {
+            document.body.removeAttribute("data-theme");
+        } else {
+            document.body.setAttribute("data-theme", selectedTheme);
+        }
+
+        localStorage.setItem("altea-theme", selectedTheme);
+        themeMenu.style.display = "none";
+    });
+});
+
+// Load saved theme when the page opens
+const savedTheme = localStorage.getItem("altea-theme");
+
+if (savedTheme && savedTheme !== "default") {
+    document.body.setAttribute("data-theme", savedTheme);
+}
