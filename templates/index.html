@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="canonical" href="https://altea-intelligence.com">
 </head>
-<body data-theme="sunrise">
+<body>
 
 <noscript>
   <p style="padding:12px;">
@@ -37,6 +37,11 @@
     </div>
 
     <div class="app-container">
+
+        <button id="settings-btn" type="button" aria-label="Open theme settings">
+            ⚙
+        </button>
+
         <header class="app-header">
             <div class="header-content">
                 <img src="{{ url_for('static', filename='altealogo.png') }}" class="logo" alt="Altea logo">
