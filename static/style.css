@@ -587,24 +587,24 @@ body {
 /* Sunrise Theme */
 [data-theme="sunrise"] {
 
-    --bg-main: #1f1308;
+    --bg-main: #2a1204;
 
-    --card-bg: rgba(48, 24, 10, 0.82);
-    --card-border: rgba(255, 180, 120, 0.10);
+    --card-bg: rgba(58, 28, 8, 0.78);
+    --card-border: rgba(255, 170, 90, 0.16);
 
-    --text-main: #fff1e6;
-    --text-secondary: #f0cdb2;
+    --text-main: #fff4ea;
+    --text-secondary: #ffd8b8;
 
-    --accent: #ff9436;
-    --accent-light: #ffb86b;
+    --accent: #ff9b42;
+    --accent-light: #ffc06e;
 
-    --user-bubble: rgba(255, 148, 54, 0.20);
-    --user-border: rgba(255, 148, 54, 0.32);
+    --user-bubble: rgba(255, 160, 70, 0.22);
+    --user-border: rgba(255, 160, 70, 0.35);
 
-    --bot-bubble: #3a1d0c;
+    --bot-bubble: #5a2408;
 
-    --input-bg: #1c0e05;
-    --input-border: #7a4a28;
+    --input-bg: #2a1206;
+    --input-border: #9a5a2e;
 
-    --divider: #6a3818;
+    --divider: #8b4b22;
 }
