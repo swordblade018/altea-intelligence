@@ -320,6 +320,49 @@ body {
     background: rgba(255, 255, 255, 0.14);
 }
 
+#theme-menu {
+    position: absolute;
+    top: 56px;
+    right: 14px;
+    z-index: 15;
+
+    width: 160px;
+    padding: 8px;
+
+    border-radius: 14px;
+
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+
+    backdrop-filter: blur(10px);
+
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.theme-option {
+    border: none;
+    border-radius: 10px;
+
+    padding: 10px 12px;
+
+    background: transparent;
+    color: var(--text-main);
+
+    text-align: left;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(2px);
+}
+
 #chat-form button:disabled {
     opacity: 0.6;
     cursor: default;
@@ -558,7 +601,7 @@ body {
     --user-bubble: rgba(255, 148, 54, 0.20);
     --user-border: rgba(255, 148, 54, 0.32);
 
-    --bot-bubble: #b84605;
+    --bot-bubble: #3a1d0c;
 
     --input-bg: #1c0e05;
     --input-border: #7a4a28;
