@@ -517,22 +517,22 @@ body {
 
     --bg-main: #1f1308;
 
-    --card-bg: rgba(38, 20, 8, 0.88);
-    --card-border: rgba(255, 180, 120, 0.08);
+    --card-bg: rgba(48, 24, 10, 0.82);
+    --card-border: rgba(255, 180, 120, 0.10);
 
-    --text-main: #f3e7dc;
-    --text-secondary: #d7c2b2;
+    --text-main: #fff1e6;
+    --text-secondary: #f0cdb2;
 
-    --accent: #ff8a3d;
-    --accent-light: #ffb36b;
+    --accent: #ff9436;
+    --accent-light: #ffb86b;
 
-    --user-bubble: rgba(255, 138, 61, 0.18);
-    --user-border: rgba(255, 138, 61, 0.28);
+    --user-bubble: rgba(255, 148, 54, 0.20);
+    --user-border: rgba(255, 148, 54, 0.32);
 
-    --bot-bubble: #2a1810;
+    --bot-bubble: #b84605;
 
-    --input-bg: #140c06;
-    --input-border: #5b3a24;
+    --input-bg: #1c0e05;
+    --input-border: #7a4a28;
 
-    --divider: #4b2d1c;
+    --divider: #6a3818;
 }
