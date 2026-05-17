@@ -21,7 +21,7 @@ def chat():
         bot_reply = bot.get_bot_reply(user_message, history)
     except Exception:
         app.logger.exception("Error in get_bot_reply")
-        bot_reply = "Sorry, something went wrong on the server."
+        bot_reply = "Sorry, I didn't quite get that! Please could you try send the message again?"
 
     return jsonify({"reply": bot_reply})
 
