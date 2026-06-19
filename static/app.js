@@ -166,7 +166,8 @@ async function sendMessage(message) {
     sendBtn.disabled = true;
 
     messageInput.value = "";
-    messageInput.focus();
+    messageInput.blur();
+    messageInput.disabled = true;
 
     // Show typing animation while we wait for the backend
     showTypingIndicator();
@@ -233,6 +234,7 @@ async function sendMessage(message) {
     } finally {
         isSending = false;
         sendBtn.disabled = false;
+        messageInput.disabled = false;
     }
 }
 
