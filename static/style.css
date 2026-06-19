@@ -622,7 +622,7 @@ body {
 /* Notice modal */
 
 .modal-hidden {
-    display: none;
+    display: none !important;
 }
 
 #notice-modal {
