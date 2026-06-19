@@ -761,18 +761,15 @@ body {
     --divider: #1f2937;
 }
 
-body:not([data-theme="ocean"]) .ocean-video {
+.ocean-video,
+.forest-video {
     opacity: 0;
 }
 
-body:not([data-theme="misty-forest"]) .forest-video {
-    opacity: 0;
-}
-
-[data-theme="ocean"] .ocean-video {
+body[data-theme="ocean"] .ocean-video {
     opacity: 0.8;
 }
 
-[data-theme="misty-forest"] .forest-video {
+body[data-theme="misty-forest"] .forest-video {
     opacity: 0.8;
 }
