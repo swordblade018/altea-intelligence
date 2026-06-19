@@ -114,17 +114,28 @@ function addMessageToChat(role, text) {
 // ---- Typing indicator ---------------------------------------------------
 
 function showTypingIndicator() {
-    // avoid duplicates
+    // Stops more than one typing indicator from appearing
     if (document.getElementById("typing-indicator")) return;
 
     const row = document.createElement("div");
     row.classList.add("message-row", "bot");
     row.id = "typing-indicator";
 
+    const avatar = document.createElement("img");
+    avatar.src = "/static/alteacolouredcircle.png";
+    avatar.alt = "Altea avatar";
+    avatar.classList.add("message-avatar");
+
     const bubble = document.createElement("div");
     bubble.classList.add("message-bubble", "typing");
-    bubble.textContent = "Altea is thinking...";
 
+    bubble.innerHTML = `
+    <span class="typing-dot"></span>
+    <span class="typing-dot"></span>
+    <span class="typing-dot"></span>
+    `;
+
+    row.appendChild(avatar);
     row.appendChild(bubble);
     chatWindow.appendChild(row);
 
