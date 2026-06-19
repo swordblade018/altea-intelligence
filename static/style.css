@@ -599,6 +599,72 @@ body {
     }
 }
 
+/* Compact privacy notice */
+
+#compact-notice {
+    text-align: center;
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 10px;
+    padding: 6px 10px;
+}
+
+#learn-more-btn {
+    background: none;
+    border: none;
+    color: var(--accent-light);
+    cursor: pointer;
+    font-size: inherit;
+    margin-left: 4px;
+    text-decoration: underline;
+}
+
+/* Notice modal */
+
+.modal-hidden {
+    display: none;
+}
+
+#notice-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+#notice-modal-card {
+    width: min(90vw, 500px);
+
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    backdrop-filter: blur(10px);
+
+    position: relative;
+
+    color: var(--text-main);
+}
+
+#close-notice-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+
+    background: none;
+    border: none;
+
+    color: var(--text-main);
+    cursor: pointer;
+}
 
 /* Altea UI Custom Themes */
 

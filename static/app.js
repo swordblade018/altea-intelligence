@@ -8,7 +8,9 @@ const appContainer = document.querySelector(".app-container");
 const settingsBtn = document.getElementById("settings-btn");
 const themeMenu = document.getElementById("theme-menu");
 const themeOptions = document.querySelectorAll(".theme-option");
-
+const learnMoreBtn = document.getElementById("learn-more-btn");
+const noticeModal = document.getElementById("notice-modal");
+const closeNoticeBtn = document.getElementById("close-notice-btn");
 
 let isSending = false;
 
@@ -321,3 +323,19 @@ const savedTheme = localStorage.getItem("altea-theme");
 if (savedTheme && savedTheme !== "default") {
     document.body.setAttribute("data-theme", savedTheme);
 }
+
+// Privacy notice modal
+
+learnMoreBtn.addEventListener("click", () => {
+    noticeModal.classList.remove("modal-hidden");
+});
+
+closeNoticeBtn.addEventListener("click", () => {
+    noticeModal.classList.add("modal-hidden");
+});
+
+noticeModal.addEventListener("click", (e) => {
+    if (e.target === noticeModal) {
+        noticeModal.classList.add("modal-hidden");
+    }
+});
