@@ -22,8 +22,12 @@
 </head>
 <body>
 
-    <video class="background-video" autoplay muted loop playsinline>
+    <video class="background-video ocean-video" autoplay muted loop playsinline>
         <source src="{{ url_for('static', filename='mixkit-sea-water-texture-waving-44372-hd-ready.mp4') }}" type="video/mp4">
+    </video>
+
+    <video class="background-video forest-video" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='mixkit-forest-covered-by-mist-at-sunrise-from-the-heights-28339-hd-ready.mp4') }}" type="video/mp4">
     </video>
 
 <noscript>
@@ -58,6 +62,10 @@
 
             <button class="theme-option" data-theme="ocean">
                 Ocean
+            </button>
+
+            <button class="theme-option" data-theme="misty-forest">
+                Misty Forest
             </button>
 
         </div>
