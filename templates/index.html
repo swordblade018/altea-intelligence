@@ -22,17 +22,7 @@
 </head>
 <body>
 
-    <video class="background-video ocean-video" autoplay muted loop playsinline>
-        <source src="{{ url_for('static', filename='mixkit_ocean_720.mp4') }}" type="video/mp4">
-    </video>
-
-    <video class="background-video forest-video" autoplay muted loop playsinline>
-        <source src="{{ url_for('static', filename='mixkit_mistyforest_720.mp4') }}" type="video/mp4">
-    </video>
-
-    <video class="background-video waterfall-video" autoplay muted loop playsinline>
-        <source src="{{ url_for('static', filename='mixkit_waterfall_720.mp4') }}" type="video/mp4">
-    </video>
+    <video id="background-video" class="background-video" muted loop playsinline preload="none"></video>
 
 <noscript>
   <p style="padding:12px;">

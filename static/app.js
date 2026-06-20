@@ -11,32 +11,31 @@ const themeOptions = document.querySelectorAll(".theme-option");
 const learnMoreBtn = document.getElementById("learn-more-btn");
 const noticeModal = document.getElementById("notice-modal");
 const closeNoticeBtn = document.getElementById("close-notice-btn");
-const oceanVideo = document.querySelector(".ocean-video");
-const forestVideo = document.querySelector(".forest-video");
-const waterfallVideo = document.querySelector(".waterfall-video");
+const backgroundVideo = document.getElementById("background-video");
 
-function pauseAllVideos() {
-    const videos = [oceanVideo, forestVideo, waterfallVideo];
-
-    videos.forEach((video) => {
-        if (!video) return;
-        video.pause();
-    });
-}
+const themeVideos = {
+    ocean: "/static/mixkit_ocean_720.mp4",
+    "misty-forest": "/static/mixkit_mistyforest_720.mp4",
+    waterfall: "/static/mixkit_waterfall_720.mp4"
+};
 
 function playThemeVideo(theme) {
-    pauseAllVideos();
+    if (!backgroundVideo) return;
 
-    if (theme === "ocean" && oceanVideo) {
-        oceanVideo.play();
-    }
+    if (themeVideos[theme]) {
 
-    if (theme === "misty-forest" && forestVideo) {
-        forestVideo.play();
-    }
+        if (backgroundVideo.src !== window.location.origin + themeVideos[theme]) {
+            backgroundVideo.src = themeVideos[theme];
+            backgroundVideo.load();
+        }
 
-    if (theme === "waterfall" && waterfallVideo) {
-        waterfallVideo.play();
+        backgroundVideo.play();
+
+    } else {
+
+        backgroundVideo.pause();
+        backgroundVideo.removeAttribute("src");
+        backgroundVideo.load();
     }
 }
 
