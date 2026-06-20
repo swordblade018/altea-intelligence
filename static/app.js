@@ -14,9 +14,9 @@ const closeNoticeBtn = document.getElementById("close-notice-btn");
 const backgroundVideo = document.getElementById("background-video");
 
 const themeVideos = {
-    ocean: "/static/mixkit_ocean_720.mp4",
-    "misty-forest": "/static/mixkit_mistyforest_720.mp4",
-    waterfall: "/static/mixkit_waterfall_720.mp4"
+    ocean: "/static/mixkit_ocean.mp4",
+    "misty-forest": "/static/mixkit_mistyforest.mp4",
+    waterfall: "/static/mixkit_waterfall.mp4"
 };
 
 function playThemeVideo(theme) {
