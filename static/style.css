@@ -688,6 +688,27 @@ body {
     cursor: pointer;
 }
 
+/* Message animation */
+.message-row {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0;
+
+    animation: messageEnter 0.28s ease-out;
+}
+
+@keyframes messageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 /* Altea UI Custom Themes */
 
 /* Sunrise Theme */
