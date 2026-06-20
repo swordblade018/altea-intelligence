@@ -29,7 +29,9 @@ function playThemeVideo(theme) {
             backgroundVideo.load();
         }
 
-        backgroundVideo.play();
+        backgroundVideo.play().catch((error) => {
+            console.log("Video play failed:", error);
+        });
 
     } else {
 
