@@ -11,6 +11,34 @@ const themeOptions = document.querySelectorAll(".theme-option");
 const learnMoreBtn = document.getElementById("learn-more-btn");
 const noticeModal = document.getElementById("notice-modal");
 const closeNoticeBtn = document.getElementById("close-notice-btn");
+const oceanVideo = document.querySelector(".ocean-video");
+const forestVideo = document.querySelector(".forest-video");
+const waterfallVideo = document.querySelector(".waterfall-video");
+
+function pauseAllVideos() {
+    const videos = [oceanVideo, forestVideo, waterfallVideo];
+
+    videos.forEach((video) => {
+        if (!video) return;
+        video.pause();
+    });
+}
+
+function playThemeVideo(theme) {
+    pauseAllVideos();
+
+    if (theme === "ocean" && oceanVideo) {
+        oceanVideo.play();
+    }
+
+    if (theme === "misty-forest" && forestVideo) {
+        forestVideo.play();
+    }
+
+    if (theme === "waterfall" && waterfallVideo) {
+        waterfallVideo.play();
+    }
+}
 
 let isSending = false;
 
@@ -312,6 +340,8 @@ themeOptions.forEach((button) => {
             document.body.setAttribute("data-theme", selectedTheme);
         }
 
+        playThemeVideo(selectedTheme);
+
         localStorage.setItem("altea-theme", selectedTheme);
         themeMenu.style.display = "none";
     });
@@ -323,6 +353,8 @@ const savedTheme = localStorage.getItem("altea-theme");
 if (savedTheme && savedTheme !== "default") {
     document.body.setAttribute("data-theme", savedTheme);
 }
+
+playThemeVideo(savedTheme);
 
 // Privacy notice modal
 
