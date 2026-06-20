@@ -365,6 +365,9 @@ body {
     width: 160px;
     padding: 8px;
 
+    max-height: 260px;
+    overflow-y: auto;
+
     border-radius: 14px;
 
     background: var(--card-bg);
