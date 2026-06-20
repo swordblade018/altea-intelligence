@@ -54,7 +54,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -2;
+    z-index: 0;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s ease;
@@ -817,14 +817,8 @@ body {
     opacity: 0;
 }
 
-body[data-theme="ocean"] .ocean-video {
-    opacity: 0.8;
-}
-
-body[data-theme="misty-forest"] .forest-video {
-    opacity: 0.8;
-}
-
-body[data-theme="waterfall"] .waterfall-video {
-    opacity: 0.6;
+body[data-theme="ocean"] .background-video,
+body[data-theme="misty-forest"] .background-video,
+body[data-theme="waterfall"] .background-video {
+    opacity: 1;
 }
