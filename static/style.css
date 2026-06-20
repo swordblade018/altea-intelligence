@@ -761,8 +761,34 @@ body {
     --divider: #1f2937;
 }
 
+/* Hidden Falls Theme */
+[data-theme="waterfall"] {
+
+    --bg-main: #031332;
+
+    --card-bg: rgba(8, 10, 14, 0.60);
+    --card-border: rgba(255, 255, 255, 0.06);
+
+    --text-main: #e5e7eb;
+    --text-secondary: #cccccc;
+
+    --accent: #2563eb;
+    --accent-light: #3b82f6;
+
+    --user-bubble: rgba(37, 99, 235, 0.18);
+    --user-border: rgba(37, 99, 235, 0.25);
+
+    --bot-bubble: #111827;
+
+    --input-bg: #020617;
+    --input-border: #374151;
+
+    --divider: #1f2937;
+}
+
 .ocean-video,
-.forest-video {
+.forest-video,
+.waterfall-video {
     opacity: 0;
 }
 
@@ -772,4 +798,8 @@ body[data-theme="ocean"] .ocean-video {
 
 body[data-theme="misty-forest"] .forest-video {
     opacity: 0.8;
+}
+
+body[data-theme="waterfall"] .waterfall-video {
+    opacity: 0.6;
 }
