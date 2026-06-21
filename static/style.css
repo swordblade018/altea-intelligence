@@ -103,7 +103,7 @@ body {
 
 /* Header */
 .app-header {
-    border-bottom: 1px solid var(--divider);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); var(--divider);
     margin-bottom: 12px;
     padding: 20px 20px 12px 20px;
 }
