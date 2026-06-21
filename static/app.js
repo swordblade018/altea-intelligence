@@ -12,6 +12,7 @@ const learnMoreBtn = document.getElementById("learn-more-btn");
 const noticeModal = document.getElementById("notice-modal");
 const closeNoticeBtn = document.getElementById("close-notice-btn");
 const backgroundVideo = document.getElementById("background-video");
+const themeLoadingMessage = document.getElementById("theme-loading-message");
 
 const themeVideos = {
     ocean: "/static/mixkit_ocean.mp4",
@@ -19,22 +20,36 @@ const themeVideos = {
     waterfall: "/static/mixkit_waterfall.mp4"
 };
 
+function showThemeLoading() {
+    if (themeLoadingMessage) {
+        themeLoadingMessage.classList.remove("theme-loading-hidden");
+    }
+}
+
+function hideThemeLoading() {
+    if (themeLoadingMessage) {
+        themeLoadingMessage.classList.add("theme-loading-hidden");
+    }
+}
+
 function playThemeVideo(theme) {
     if (!backgroundVideo) return;
 
     if (themeVideos[theme]) {
+        showThemeLoading();
 
         if (backgroundVideo.src !== window.location.origin + themeVideos[theme]) {
             backgroundVideo.src = themeVideos[theme];
             backgroundVideo.load();
         }
 
-        backgroundVideo.play().catch((error) => {
-            console.log("Video play failed:", error);
-        });
+        backgroundVideo.oncanplay = () => {
+            hideThemeLoading();
+            backgroundVideo.play().catch(() => {});
+        };
 
     } else {
-
+        hideThemeLoading();
         backgroundVideo.pause();
         backgroundVideo.removeAttribute("src");
         backgroundVideo.load();
