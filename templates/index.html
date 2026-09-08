@@ -24,17 +24,17 @@
 
     <video id="background-video" class="background-video" muted loop playsinline preload="none"></video>
 
-    <div id="theme-loading-message" class=""theme-loading-hidden">
+    <div id="theme-loading-message" class="theme-loading-hidden">
         Loading theme...
     </div>
 
-<noscript>
-  <p style="padding:12px;">
-    Altea needs JavaScript enabled to work. Please enable JavaScript and refresh.
-  </p>
-</noscript>
+    <noscript>
+        <p style="padding:12px;">
+         Altea needs JavaScript enabled to work. Please enable JavaScript and refresh.
+        </p>
+    </noscript>
 
-    <!-- Safety footer-->
+    <!-- Background ripple effect -->
 
     <div class="ripple-layer">
         <div class="ripple-circle"></div>
@@ -87,7 +87,7 @@
             <div id="chat-window"></div>
         </main>
 
-    <!--Wellbeing tip bar-->
+    <!-- Wellbeing tip bar for mobile -->
     <div class="wellbeing-tip-pill mobile-tip">
         <span class="wellbeing-tip-label">Words of advice: </span>
         <span class="wellbeing-tip-text" id="wellbeing-tip-text">
@@ -112,45 +112,115 @@
             <button type="submit"> ↑ </button>
         </form>
 
-        <!-- Compact privacy notice -->
+        <!-- Compact safety and support notice -->
          <div id="compact-notice">
             Chats aren't stored by default to help protect your privacy.
-            <button id="learn-more-btn" type="button">Learn more</button>
+            <button id="learn-more-btn" type="button">Safety & support</button>
          </div>
     </div>
 
-    <!-- Safety and privacy popup -->
-    <div id="notice-modal" class="modal-hidden">
-        <div id="notice-modal-card">
-            <button id="close-notice-btn" type="button" aria-label="Close notice">×</button>
+<!-- Safety, privacy and support popup -->
+<div id="notice-modal" class="modal-hidden">
+    <div id="notice-modal-card">
 
-            <h3>Important notice</h3>
+        <button
+            id="close-notice-btn"
+            type="button"
+            aria-label="Close notice"
+        >
+            ×
+        </button>
 
-            <p><strong>Safety:</strong> Altea is not a crisis service and cannot respond to emergencies. If you are in immediate danger, please contact your local emergency services or a trusted adult.</p>
+        <h3>Safety, privacy & support</h3>
 
-            <p><strong>Privacy:</strong> To protect everyone's privacy, messages aren't stored by default. Avoid sharing personal identifying information.</p>
+        <section class="notice-section">
+            <h4>Safety</h4>
 
             <p>
-                In the UK, you can contact <strong>Samaritans (24/7)</strong> on <strong>116 123</strong>
-                or text <strong>"SHOUT"</strong> to <strong>85258</strong>.
-                You can also visit
-                <a href="https://www.samaritans.org/" target="_blank" rel="noopener noreferrer">samaritans.org</a>.
+                Altea is not a crisis service and cannot respond to emergencies.
+                If you are in immediate danger, please contact your local
+                emergency services or a trusted adult.
             </p>
-        </div>
+        </section>
+
+        <section class="notice-section">
+            <h4>Privacy</h4>
+
+            <p>
+                To protect everyone's privacy, messages aren't stored by default.
+                Avoid sharing personal identifying information.
+            </p>
+        </section>
+
+        <section class="notice-section">
+            <h4>Immediate emotional support</h4>
+
+            <p>
+                In the UK, you can contact
+                <strong>Samaritans (24/7)</strong> on
+                <strong>116 123</strong>
+                or text <strong>"SHOUT"</strong> to
+                <strong>85258</strong>.
+            </p>
+
+            <p>
+                You can also visit
+                <a
+                    href="https://www.samaritans.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    samaritans.org
+                </a>.
+            </p>
+        </section>
+
+        <section class="notice-section">
+            <h4>Human & peer support</h4>
+
+            <p>
+                Altea does not aim to replace human connection.
+                If talking with another person would feel more helpful, 
+                there are organisations that can provide additional support.
+            </p>
+
+            <div class="support-organisation">
+                <h5>ANDYSMANCLUB</h5>
+
+                <p>
+                    ANDYSMANCLUB provides free peer-to-peer support groups for men,
+                    offering a judgement-free place to talk.
+                </p>
+
+                <p>
+                    Altea supports ANDYSMANCLUB's mission to remind men that
+                    <strong>#ITSOKAYTOTALK</strong>.
+                </p>
+
+                <a
+                    href="https://andysmanclub.co.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Visit ANDYSMANCLUB
+                </a>
+            </div>
+        </section>
+
     </div>
+</div>
 
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+<!-- Wellbeing tip bar for desktop -->
+<div class="wellbeing-tip-pill desktop-tip">
+    <span class="wellbeing-tip-label">Words of advice: </span>
+    <span class="wellbeing-tip-text">
+        Take things one step at a time. You don't have to handle everything today.
+    </span>
+</div>
 
-    <!-- Wellbeing tip bar for desktop-->
-     <div class="wellbeing-tip-pill desktop-tip">
-        <span class="wellbeing-tip-label">Words of advice: </span>
-        <span class="wellbeing-tip-text">
-            Take things one step at a time. You don't have to handle everything today.
-        </span>
-     </div>
-
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 
     <!-- Vercel Analytics-->
-     <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

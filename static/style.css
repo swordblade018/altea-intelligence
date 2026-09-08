@@ -103,7 +103,7 @@ body {
 
 /* Header */
 .app-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); var(--divider);
+    border-bottom: 1px solid var(--divider);
     margin-bottom: 12px;
     padding: 20px 20px 12px 20px;
 }
@@ -644,7 +644,7 @@ body {
     }
 }
 
-/* Compact privacy notice */
+/* Compact safety and support notice */
 
 #compact-notice {
     text-align: center;
@@ -684,12 +684,13 @@ body {
 
 #notice-modal-card {
     width: min(90vw, 500px);
+    max-height: 85vh;
+    overflow-y: auto;
 
     background: var(--card-bg);
     border: 1px solid var(--card-border);
 
     border-radius: 16px;
-
     padding: 20px;
 
     backdrop-filter: blur(10px);
@@ -699,16 +700,100 @@ body {
     color: var(--text-main);
 }
 
+/* Notice modal content */
+
+#notice-modal-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+}
+
+.notice-section {
+    padding: 14px 0;
+    border-top: 1px solid var(--divider);
+}
+
+.notice-section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.notice-section h4 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.notice-section p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.notice-section p:last-child {
+    margin-bottom: 0;
+}
+
+.notice-section a {
+    color: var(--accent-light);
+    text-decoration: none;
+}
+
+.notice-section a:hover {
+    text-decoration: underline;
+}
+
+/* ANDYSMANCLUB support card */
+
+.support-organisation {
+    margin-top: 10px;
+    padding: 14px;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--card-border);
+}
+
+.support-organisation h5 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.support-organisation a {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--accent-light);
+}
+
 #close-notice-btn {
     position: absolute;
     top: 10px;
     right: 12px;
+
+    width: 32px;
+    height: 32px;
 
     background: none;
     border: none;
 
     color: var(--text-main);
     cursor: pointer;
+
+    font-size: 1.4rem;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.75;
+}
+
+#close-notice-btn:hover {
+    opacity: 1;
 }
 
 /* Message animation */
