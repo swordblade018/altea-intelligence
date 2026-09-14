@@ -140,7 +140,29 @@ body {
     padding: 0 20px;
     margin-bottom: 12px;
 
-    border-bottom: 1px solid var(--divider);
+    border-bottom: none;
+}
+
+
+/* Straight sections of the curved header divider */
+.app-header::before,
+.app-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+
+    width: calc(50% - 44px);
+    height: 1px;
+
+    background: var(--divider);
+}
+
+.app-header::before {
+    left: 0;
+}
+
+.app-header::after {
+    right: 0;
 }
 
 .header-name {
@@ -156,7 +178,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
 
-    width: 68px;
+    width: 88px;
     height: 68px;
 
     display: flex;
@@ -174,6 +196,24 @@ body {
     object-fit: contain;
 
     filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.22));
+}
+
+/* Curved centre of the header divider */
+.logo-drop::after {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 88px;
+    height: 52px;
+
+    border: 1px solid var(--divider);
+    border-radius: 50%;
+
+    clip-path: inset(50% 0 0 0);
+    pointer-events: none;
 }
 
 /* Chat window */
