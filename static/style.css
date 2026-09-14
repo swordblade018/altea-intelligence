@@ -89,15 +89,42 @@ body {
     }
 
     .app-container {
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(6px);
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        isolation: isolate;
+
         transition:
             width 0.35s ease,
-            max-width 0.35s ease,
-            background-color 0.35s ease,
-            border-color 0.35s ease;
+            max-width 0.35s ease;
+    }
+
+    .app-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(6px);
+
+        -webkit-mask-image:
+            radial-gradient(
+                circle 42px at 50% 0,
+                transparent 0 40px,
+                black 41px
+            );
+
+        mask-image:
+            radial-gradient(
+                circle 42px at 50% 0,
+                transparent 0 40px,
+                black 41px
+            );
     }
 }
 
@@ -117,7 +144,7 @@ body {
 }
 
 .header-name {
-    font-size: 0.95reml;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-main);
 }
@@ -148,7 +175,7 @@ body {
 .logo {
     width: 34px;
     height: 34px;
-    objkect-fit: contain;
+    object-fit: contain;
 
     filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.22));
 }
