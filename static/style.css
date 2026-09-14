@@ -333,7 +333,7 @@ body {
     }
 
     40% {
-        transform: translateY(-8px);
+        transform: translateY(-15px);
         opacity: 1;
     }
 }
