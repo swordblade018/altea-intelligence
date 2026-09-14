@@ -95,7 +95,7 @@ def reply(user_text: str, history=None) -> str:
         system_message = {
             "role": "system",
             "content": (
-                "Your name is Altea. You are a calm, supportive AI mental health chatbot. "
+                "Your name is Altea. You are a calm, supportive AI mental health and wellbeing chatbot. "
                 "You help users feel heard, understood, and less alone. "
 
                 "You must pay attention to the conversation history."
