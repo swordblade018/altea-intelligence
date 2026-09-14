@@ -113,11 +113,11 @@ body {
         backdrop-filter: blur(6px);
 
         -webkit-mask:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 0 H440 C475 0 460 70 500 70 C540 70 525 0 560 0 H1000 V1000 H0 Z'/%3E%3C/svg%3E")
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 0 H410 C455 0 448 78 500 78 C552 78 545 0 590 0 H1000 V1000 H0 Z'/%3E%3C/svg%3E")
     center / 100% 100% no-repeat;
 
         mask:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 0 H440 C475 0 460 70 500 70 C540 70 525 0 560 0 H1000 V1000 H0 Z'/%3E%3C/svg%3E")
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 0 H410 C455 0 448 78 500 78 C552 78 545 0 590 0 H1000 V1000 H0 Z'/%3E%3C/svg%3E")
     center / 100% 100% no-repeat;
     }
 }
@@ -138,25 +138,32 @@ body {
 }
 
 
-/* Straight sections of the curved header divider */
-.app-header::before,
+/* Smooth continuous header divider */
+.app-header::before {
+    display: none;
+}
+
 .app-header::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    left: 0;
+    right: 0;
+    bottom: -32px;
 
-    width: calc(50% - 44px);
-    height: 1px;
+    width: 100%;
+    height: 33px;
 
     background: var(--divider);
-}
 
-.app-header::before {
-    left: 0;
-}
+    -webkit-mask:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 33' preserveAspectRatio='none'%3E%3Cpath d='M0 1 H410 C455 1 448 32 500 32 C552 32 545 1 590 1 H1000' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+        center / 100% 100% no-repeat;
 
-.app-header::after {
-    right: 0;
+    mask:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 33' preserveAspectRatio='none'%3E%3Cpath d='M0 1 H410 C455 1 448 32 500 32 C552 32 545 1 590 1 H1000' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+        center / 100% 100% no-repeat;
+
+    pointer-events: none;
 }
 
 .header-name {
@@ -172,8 +179,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
 
-    width: 88px;
-    height: 68px;
+    width: 126px;
+    height: 72px;
 
     display: flex;
     align-items: center;
@@ -190,24 +197,6 @@ body {
     object-fit: contain;
 
     filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.22));
-}
-
-/* Curved centre of the header divider */
-.logo-drop::after {
-    content: "";
-    position: absolute;
-    top: 42px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 88px;
-    height: 52px;
-
-    border: 1px solid var(--divider);
-    border-radius: 50%;
-
-    clip-path: inset(50% 0 0 0);
-    pointer-events: none;
 }
 
 /* Chat window */
