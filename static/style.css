@@ -112,19 +112,13 @@ body {
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(6px);
 
-        -webkit-mask-image:
-            radial-gradient(
-                ellipse 44px 68px at 50% 0,
-                transparent 0 98%,
-                black 100%
-            );
+        -webkit-mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 0 H440 C475 0 460 70 500 70 C540 70 525 0 560 0 H1000 V1000 H0 Z'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
 
-        mask-image:
-            radial-gradient(
-                ellipse 44px 68px at 50% 0,
-                transparent 0 98%,
-                black 100%
-            );
+        mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0 0 H440 C475 0 460 70 500 70 C540 70 525 0 560 0 H1000 V1000 H0 Z'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
     }
 }
 
