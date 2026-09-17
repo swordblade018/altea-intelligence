@@ -1061,3 +1061,11 @@ body[data-theme="waterfall"] .background-video {
         grid-template-columns: 1fr;
     }
 }
+
+.region-hidden {
+    display: none;
+}
+
+.support-organisation + .support-organisation {
+    margin-top: 10px;
+}

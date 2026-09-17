@@ -18,6 +18,14 @@ const supportRegionOptions = document.querySelectorAll(
 );
 
 const regionSaveMessage = document.getElementById("region-save-message");
+const ukSupportResources = document.getElementById(
+    "uk-support-resources"
+);
+
+const usSupportResources = document.getElementById(
+    "us-support-resources"
+);
+
 
 const themeVideos = {
     ocean: "/static/mixkit_ocean.mp4",
@@ -379,6 +387,22 @@ playThemeVideo(savedTheme);
 
 // ---- Support region -----------------------------------------------------
 
+function updateSupportResources(region) {
+    if (!ukSupportResources || !usSupportResources) return;
+
+    const isUnitedStates = region === "us";
+
+    ukSupportResources.classList.toggle(
+        "region-hidden",
+        isUnitedStates
+    );
+
+    usSupportResources.classList.toggle(
+        "region-hidden",
+        !isUnitedStates
+    );
+}
+
 const savedSupportRegion =
     localStorage.getItem("altea-support-region") || "uk";
 
@@ -390,11 +414,15 @@ if (savedSupportOption) {
     savedSupportOption.checked = true;
 }
 
+updateSupportResources(savedSupportRegion);
+
 supportRegionOptions.forEach((option) => {
     option.addEventListener("change", () => {
         if (!option.checked) return;
 
         localStorage.setItem("altea-support-region", option.value);
+
+        updateSupportResources(option.value);
 
         if (regionSaveMessage) {
             regionSaveMessage.textContent = "Support region saved.";
