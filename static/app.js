@@ -13,6 +13,11 @@ const noticeModal = document.getElementById("notice-modal");
 const closeNoticeBtn = document.getElementById("close-notice-btn");
 const backgroundVideo = document.getElementById("background-video");
 const themeLoadingMessage = document.getElementById("theme-loading-message");
+const supportRegionOptions = document.querySelectorAll(
+    'input[name="support-region"]'
+);
+
+const regionSaveMessage = document.getElementById("region-save-message");
 
 const themeVideos = {
     ocean: "/static/mixkit_ocean.mp4",
@@ -371,6 +376,31 @@ if (savedTheme && savedTheme !== "default") {
 }
 
 playThemeVideo(savedTheme);
+
+// ---- Support region -----------------------------------------------------
+
+const savedSupportRegion =
+    localStorage.getItem("altea-support-region") || "uk";
+
+const savedSupportOption = document.querySelector(
+    `input[name="support-region"][value="${savedSupportRegion}"]`
+);
+
+if (savedSupportOption) {
+    savedSupportOption.checked = true;
+}
+
+supportRegionOptions.forEach((option) => {
+    option.addEventListener("change", () => {
+        if (!option.checked) return;
+
+        localStorage.setItem("altea-support-region", option.value);
+
+        if (regionSaveMessage) {
+            regionSaveMessage.textContent = "Support region saved.";
+        }
+    });
+});
 
 // Privacy notice modal
 

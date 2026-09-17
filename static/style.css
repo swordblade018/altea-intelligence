@@ -1001,3 +1001,63 @@ body[data-theme="misty-forest"] .background-video,
 body[data-theme="waterfall"] .background-video {
     opacity: 1;
 }
+
+
+/* Support region selector */
+
+.support-region-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.support-region-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 12px;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.support-region-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+}
+
+.support-region-option:has(input:checked) {
+    background: var(--user-bubble);
+    border-color: var(--accent);
+    color: var(--text-main);
+}
+
+.support-region-option input {
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+#region-save-message {
+    min-height: 18px;
+    margin-top: 8px;
+    margin-bottom: 0;
+
+    color: var(--accent-light);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 480px) {
+    .support-region-options {
+        grid-template-columns: 1fr;
+    }
+}
