@@ -27,15 +27,32 @@ CRISIS_KEYWORDS = [
     "hurt myself", "overdose", "take my life",
 ]
 
-CRISIS_MESSAGE = (
-    "I’m really glad you reached out — it sounds like you’re going through something incredibly difficult.\n\n"
-    "I can’t help with crisis situations, but you deserve real support right now.\n\n"
-    "🇬🇧 UK support:\n"
-    "📞 Samaritans (24/7): 116 123\n"
-    "📱 Text 'SHOUT' to 85258\n\n"
-    "If you’re in immediate danger, call 999 or go to A&E.\n\n"
-    "(This is a prewritten safety message.)"
-)
+CRISIS_MESSAGES = {
+    "uk": (
+        "I’m really glad you reached out — it sounds like you’re going "
+        "through something incredibly difficult.\n\n"
+        "I can’t provide crisis or emergency support, but you deserve "
+        "real support right now.\n\n"
+        "UK support:\n"
+        "Samaritans (24/7): Call 116 123\n"
+        "Shout: Text \"SHOUT\" to 85258\n\n"
+        "If you’re in immediate danger, call 999 or go to A&E.\n\n"
+        "(This is a prewritten safety message.)"
+    ),
+
+    "us": (
+        "I’m really glad you reached out — it sounds like you’re going "
+        "through something incredibly difficult.\n\n"
+        "I can’t provide crisis or emergency support, but you deserve "
+        "real support right now.\n\n"
+        "United States support:\n"
+        "988 Suicide & Crisis Lifeline: Call or text 988\n"
+        "Crisis Text Line: Text \"HOME\" to 741741\n\n"
+        "If you’re in immediate danger, call 911 or go to the nearest "
+        "emergency department.\n\n"
+        "(This is a prewritten safety message.)"
+    ),
+}
 
 def _contains_crisis(text: str) -> bool:
     t = (text or "").lower()
@@ -77,14 +94,21 @@ def _mock_model_response(user_text: str) -> str:
 
 # ---- Main entrypoint ----------------------------------------------------
 
-def reply(user_text: str, history=None) -> str:
+def reply(
+        user_text: str,
+        history=None,
+        support_region: str = "uk"
+    ) -> str:
     text = (user_text or "").strip()
 
     if not text:
         return "I’m here when you’re ready."
 
     if _contains_crisis(text):
-        return CRISIS_MESSAGE
+        return CRISIS_MESSAGES.get(
+            support_region,
+            CRISIS_MESSAGES["uk"]
+        )
 
     # Mock path
     if client is None or MOCK_ENABLED or not USE_REAL_API:
@@ -140,5 +164,9 @@ def reply(user_text: str, history=None) -> str:
     except Exception:
         return "Sorry — I’m having trouble reaching the server right now."
 
-def get_bot_reply(message: str, history=None) -> str:
-    return reply(message, history)
+def get_bot_reply(
+        message: str,
+        history=None,
+        support_region: str = "uk"
+    ) -> str:
+        return reply(message, history, support_region)
