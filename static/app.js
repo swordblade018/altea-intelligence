@@ -236,6 +236,9 @@ async function sendMessage(message) {
     const timeout = setTimeout(() => controller.abort(), 15000); // 15s
 
     try {
+        const supportRegion =
+            localStorage.getItem("altea-support-region") || "uk";
+
         const response = await fetch("/chat", {
             method: "POST",
             headers: {
@@ -243,7 +246,8 @@ async function sendMessage(message) {
             },
             body: JSON.stringify({
                 message: message,
-                history: conversationHistory
+                history: conversationHistory,
+                support_region: supportRegion
             }),
             signal: controller.signal,
         });

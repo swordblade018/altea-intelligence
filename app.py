@@ -14,11 +14,20 @@ def chat():
     user_message = (data.get("message") or "").strip()
     history = data.get("history") or []
 
+    support_region = data.get("support_region") or "uk"
+
+    if support_region not in {"uk", "us"}:
+        support_region = "uk"
+
     if not user_message:
         return jsonify({"reply": "Tell me what’s on your mind, and I’ll reply."})
 
     try:
-        bot_reply = bot.get_bot_reply(user_message, history)
+        bot_reply = bot.get_bot_reply(
+            user_message,
+            history,
+            support_region
+            )
     except Exception:
         app.logger.exception("Error in get_bot_reply")
         bot_reply = "Sorry, I didn't quite get that! Please could you try send the message again?"
